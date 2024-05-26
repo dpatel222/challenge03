@@ -48,4 +48,7 @@ puts cards.inspect
 glass = Product.where(:name => "Glass").first
 puts glass.inspect
 
+find = Product.find(200)
+puts find.name
 
+puts find.category.name
