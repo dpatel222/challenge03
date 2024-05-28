@@ -48,7 +48,36 @@ puts cards.inspect
 glass = Product.where(:name => "Glass").first
 puts glass.inspect
 
-find = Product.find(200)
+find = Product.find(155)
 puts find.name
 
 puts find.category.name
+puts "=========================================="
+beverages = Category.where(:name => 'Beverages').first
+
+puts beverages.inspect
+
+new_one = beverages.products.build( name: "New Drink",
+                                    description: "A new Drink for the table",
+                                    price: 123.00,
+                                    stock_quantity: 201)
+
+new_one.save
+
+drink = Product.where(:name => "New Drink").first
+puts drink.inspect
+
+puts new_one.inspect
+
+new_cat = Product.find(157)
+puts new_cat.name
+puts new_cat.category.inspect
+
+condiments = Category.where(:name => 'Condiments',).first
+
+puts condiments.inspect
+
+x = condiments.products.where('price > 10')
+
+x.each{|p| puts p.name, p.price}
+
