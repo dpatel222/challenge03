@@ -11,23 +11,28 @@ end
     new_cat = Category.create(name: Faker::Pokemon.name)
 
     10.times do
-      new_cat.products.create(
-        name: Faker::Book.title,
+      new_product = new_cat.products.new(
+        name: Faker::Commerce.product_name,
         description: Faker::Book.author,
         price: Faker::Number.number(2),
         stock_quantity: Faker::Number.number(2)
       )
+      
+
+      if (new_product.save)
+        puts new_product.inspect
+      else
+        puts "There was an error."
+      end
     end
 
-end
+end  
 =end
+
+
 
 all_products = Product.all
 
-=begin for i in 0..100
-    puts all_products[i].inspect
-end
-=end
 
 
 
